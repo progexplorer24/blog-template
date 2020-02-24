@@ -1,0 +1,5 @@
+gatsby-*.js
+node_modules
+.cache
+*.config.js
+*.md
