@@ -6,3 +6,7 @@
 
 // You can delete this file if you're not using it
 import "./src/utils/globals.css"
+
+import { wrapRootElement as wrap } from "./root-wrapper"
+
+export const wrapRootElement = wrap
