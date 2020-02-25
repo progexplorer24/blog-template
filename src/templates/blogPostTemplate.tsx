@@ -2,7 +2,7 @@ import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
 import { Layout } from "../components/layout"
-import { Dump } from "../components/dump"
+// import { Dump } from "../components/dump"
 
 type BlogPostProps = {
   data: {
@@ -42,9 +42,6 @@ const BlogPost: React.FC<BlogPostProps> = ({ data, pageContext }) => {
   console.log(typeof previous)
   return (
     <Layout>
-      <Dump context={pageContext} />
-      <Dump previous={previous} />
-      <Dump next={next} />
       <h1>{frontmatter.title}</h1>
       <p>{frontmatter.date}</p>
       <MDXRenderer>{body}</MDXRenderer>
