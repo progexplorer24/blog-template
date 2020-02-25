@@ -2,6 +2,7 @@ import React, { ReactNode } from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import tw from "tailwind.macro"
 import { css } from "@emotion/core"
+import copyToClipboard from "../utils/copy-to-clipboard"
 
 type CodeProps = {
   children: {
@@ -19,10 +20,16 @@ export const Code: React.FC<CodeProps> = props => {
   console.log(props)
   const className = props.children.props.className || ""
   const matches = className.match(/language-(?<lang>.*)/)
+  const codeString = props.children.props.children.trim()
+
+  const handleClick = (): void => {
+    copyToClipboard(codeString)
+  }
+
   return (
     <Highlight
       {...defaultProps}
-      code={props.children.props.children.trim()}
+      code={codeString}
       language={
         matches && matches.groups && matches.groups.lang
           ? matches.groups.lang
@@ -40,13 +47,22 @@ export const Code: React.FC<CodeProps> = props => {
           className={className}
           style={style}
           css={css`
-            ${tw`p-2 mx-0 my-4 overflow-x-auto text-left rounded-lg`}
+            ${tw`relative p-2 mx-0 my-4 overflow-x-auto text-left rounded-lg`}
             & .token-line {
               ${tw`h-5 leading-snug`}
             }
             /* font-family: "Courier New", Courier, monospace; */
           `}
         >
+          <button
+            onClick={handleClick}
+            css={css`
+              ${tw`absolute px-4 py-1 m-1 text-white rounded-lg opacity-50 hover:opacity-100 focus:outline-none focus:opacity-100`}
+              right: 0.25rem;
+            `}
+          >
+            Copy
+          </button>
           {tokens.map((line, i) => (
             // eslint-disable-next-line react/jsx-key
             <div {...getLineProps({ line, key: i })}>
