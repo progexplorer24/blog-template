@@ -1,15 +1,40 @@
+const siteMetadata = {
+  title: `Code Explorer`,
+  description: `This is my coding blog. I write about my coding journey`,
+  siteUrl: `https://mysite-url.com`,
+  image: `/default-site-image.jpg`,
+  siteLanguage: `en-US`,
+  siteLocale: `en_us`,
+  author: `progexplorer@gmail.com`,
+  twitterUsername: `yourUserName`,
+}
+
 module.exports = {
-  siteMetadata: {
-    title: `Code Explorer`,
-    description: `This is my coding blog. I write about my coding journey`,
-    author: `@gatsbyjs`,
-  },
+  siteMetadata: siteMetadata,
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 672,
+            },
+          },
+        ],
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 672,
+            },
+          },
+        ],
       },
     },
     {
@@ -26,8 +51,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

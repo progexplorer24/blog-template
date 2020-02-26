@@ -3,6 +3,12 @@ import { graphql, useStaticQuery } from "gatsby"
 type siteMetadataProps = {
   title: string
   description: string
+  image: string
+  siteUrl: string
+  siteLanguage: string
+  siteLocale: string
+  twitterUsername: string
+  author: string
 }
 
 export const useSiteMetadata = (): siteMetadataProps => {
@@ -13,6 +19,12 @@ export const useSiteMetadata = (): siteMetadataProps => {
           siteMetadata {
             title
             description
+            image
+            siteUrl
+            siteLanguage
+            siteLocale
+            twitterUsername
+            author
           }
         }
       }

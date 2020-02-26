@@ -1,7 +1,35 @@
 import React, { ReactNode } from "react"
-
-import { Layout } from "../components/layout"
 import { graphql, Link } from "gatsby"
+import tw from "tailwind.macro"
+import { css } from "@emotion/core"
+import Img from "gatsby-image"
+import SEO from "react-seo-component"
+import { Layout } from "../components/layout"
+import { useSiteMetadata } from "../hooks/useSiteMetadata"
+// importSEO } from "../components/dump"
+
+type ImageProps = {
+  sizes: {
+    tracedSVG: string
+    aspectRatio: number
+    src: string
+    srcSet: string
+    sizes: string
+  }
+}
+
+const Image: React.FC<ImageProps> = ({ sizes }) => {
+  console.log(sizes)
+
+  return (
+    <Img
+      css={css`
+        ${tw`rounded-lg `}
+      `}
+      sizes={sizes}
+    />
+  )
+}
 
 type HomePageProps = {
   children?: ReactNode
@@ -14,6 +42,17 @@ type HomePageProps = {
           frontmatter: {
             title: string
             date: Date
+            cover: {
+              childImageSharp: {
+                sizes: {
+                  tracedSVG: string
+                  aspectRatio: number
+                  src: string
+                  srcSet: string
+                  sizes: string
+                }
+              }
+            }
           }
           fields: {
             slug: string
@@ -25,14 +64,35 @@ type HomePageProps = {
 }
 
 const Home: React.FC<HomePageProps> = ({ data }) => {
+  const {
+    description,
+    title,
+    image,
+    siteUrl,
+    siteLanguage,
+    siteLocale,
+    twitterUsername,
+  } = useSiteMetadata()
+
   return (
     <>
       <Layout>
-        {/* <Dump data={data} /> */}
+        <SEO
+          title={title}
+          description={description}
+          image={`${siteUrl}${image}`}
+          pathname={siteUrl}
+          siteLanguage={siteLanguage}
+          siteLocale={siteLocale}
+          twitterUsername={twitterUsername}
+        />
         <main>
           {data.allMdx.nodes.map(({ excerpt, frontmatter, id, fields }) => (
             <div key={id}>
               <Link to={fields.slug}>
+                {frontmatter.cover ? (
+                  <Image sizes={frontmatter.cover.childImageSharp.sizes} />
+                ) : null}
                 <h1>{frontmatter.title}</h1>
                 <p>{frontmatter.date}</p>
                 <p>{excerpt}</p>
@@ -58,7 +118,14 @@ export const query = graphql`
         excerpt(pruneLength: 250)
         frontmatter {
           title
-          date
+          date(formatString: "YYYY MMMM Do")
+          cover {
+            childImageSharp {
+              sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
+                ...GatsbyImageSharpSizes_tracedSVG
+              }
+            }
+          }
         }
         fields {
           slug
