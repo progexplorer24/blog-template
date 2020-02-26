@@ -1,7 +1,9 @@
 import React, { ReactNode } from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
+import theme from "prism-react-renderer/themes/duotoneDark"
 import tw from "tailwind.macro"
 import { css } from "@emotion/core"
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live"
 import copyToClipboard from "../utils/copy-to-clipboard"
 
 type CodeProps = {
@@ -17,10 +19,39 @@ type CodeProps = {
 }
 
 export const Code: React.FC<CodeProps> = props => {
-  console.log(props)
-  const className = props.children.props.className || ""
+  const mdxProps = props.children.props
+  const className = mdxProps.className || ""
+
   const matches = className.match(/language-(?<lang>.*)/)
   const codeString = props.children.props.children.trim()
+
+  /**
+  |--------------------------------------------------
+  | Remember about the limitations of the live sandbox for now:
+  1. You can't use import statement
+  2. You must pass parameters that you want to use inside scope
+  3. You must use render method to render element
+  4. You can't use Emotion Js for styling
+  |--------------------------------------------------
+  */
+
+  if (mdxProps["react-live"]) {
+    const scope = { css }
+    return (
+      <div>
+        <LiveProvider
+          code={codeString}
+          theme={theme}
+          scope={scope}
+          noInline={true}
+        >
+          <LiveEditor />
+          <LiveError />
+          <LivePreview />
+        </LiveProvider>
+      </div>
+    )
+  }
 
   const handleClick = (): void => {
     copyToClipboard(codeString)

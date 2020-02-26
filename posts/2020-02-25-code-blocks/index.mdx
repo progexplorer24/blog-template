@@ -9,16 +9,16 @@ published: true
 Here is the `Dump` component!
 
 ```jsx
-import React from "react"
-
 const Dump = props => (
   <div
     style={{
       fontSize: 20,
       border: "1px solid #efefef",
       padding: 10,
-      background: "white",
     }}
+    css={css`
+      background: "red";
+    `}
   >
     {Object.entries(props).map(([key, val]) => (
       <pre key={key}>
@@ -29,5 +29,5 @@ const Dump = props => (
   </div>
 )
 
-export default Dump
+render(<Dump props={"hey"} />)
 ```
