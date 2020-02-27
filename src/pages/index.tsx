@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 import SEO from "react-seo-component"
 import { Layout } from "../components/layout"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
-// importSEO } from "../components/dump"
+import { Dump } from "../components/dump"
 
 type ImageProps = {
   sizes: {
@@ -72,6 +72,7 @@ const Home: React.FC<HomePageProps> = ({ data }) => {
     siteLanguage,
     siteLocale,
     twitterUsername,
+    author,
   } = useSiteMetadata()
 
   return (
@@ -85,6 +86,17 @@ const Home: React.FC<HomePageProps> = ({ data }) => {
           siteLanguage={siteLanguage}
           siteLocale={siteLocale}
           twitterUsername={twitterUsername}
+          author={author}
+        />
+        <Dump
+          title={title}
+          description={description}
+          image={`${siteUrl}${image}`}
+          pathname={siteUrl}
+          siteLanguage={siteLanguage}
+          siteLocale={siteLocale}
+          twitterUsername={twitterUsername}
+          author={author}
         />
         <main>
           {data.allMdx.nodes.map(({ excerpt, frontmatter, id, fields }) => (

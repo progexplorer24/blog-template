@@ -2,15 +2,24 @@ import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
 import { Layout } from "../components/layout"
+import { Dump } from "../components/dump"
+import { useSiteMetadata } from "../hooks/useSiteMetadata"
 // import { Dump } from "../components/dump"
 
 type BlogPostProps = {
   data: {
     mdx: {
       body: string
+      excerpt: string
+      fields: {
+        slug: string
+      }
       frontmatter: {
         title: string
         date: string
+        cover: {
+          publicURL: string
+        }
       }
     }
   }
@@ -36,14 +45,37 @@ type BlogPostProps = {
 }
 
 const BlogPost: React.FC<BlogPostProps> = ({ data, pageContext }) => {
-  const { frontmatter, body } = data.mdx
+  const {
+    image,
+    siteUrl,
+    siteLanguage,
+    siteLocale,
+    twitterUsername,
+    author,
+  } = useSiteMetadata()
+  const { frontmatter, body, fields, excerpt } = data.mdx
+  const { title, date, cover } = frontmatter
   const { previous, next } = pageContext
-  console.log(pageContext)
-  console.log(typeof previous)
+
   return (
     <Layout>
-      <h1>{frontmatter.title}</h1>
-      <p>{frontmatter.date}</p>
+      <Dump
+        title={title}
+        description={excerpt}
+        image={
+          cover === null ? `${siteUrl}${image}` : `${siteUrl}${cover.publicURL}`
+        }
+        pathname={`${siteUrl}${fields.slug}`}
+        siteLanguage={siteLanguage}
+        siteLocale={siteLocale}
+        twitterUsername={twitterUsername}
+        author={author}
+        article={true}
+        publishedDate={date}
+        modifiedDate={new Date(Date.now()).toISOString()}
+      />
+      <h1>{title}</h1>
+      <p>{date}</p>
       <MDXRenderer>{body}</MDXRenderer>
       {previous === null ? null : (
         <>
@@ -67,9 +99,16 @@ export const query = graphql`
   query PostsBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       body
+      excerpt
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "YYYY MMMM Do")
+        cover {
+          publicURL
+        }
       }
     }
   }

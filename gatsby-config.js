@@ -2,10 +2,10 @@ const siteMetadata = {
   title: `Code Explorer`,
   description: `This is my coding blog. I write about my coding journey`,
   siteUrl: `https://mysite-url.com`,
-  image: `/default-site-image.jpg`,
+  image: `/explorer-code.jpg`,
   siteLanguage: `en-US`,
   siteLocale: `en_us`,
-  author: `progexplorer@gmail.com`,
+  author: `Prog Explorer`,
   twitterUsername: `yourUserName`,
 }
 

@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 
-type siteMetadataProps = {
+export type SiteMetadataProps = {
   title: string
   description: string
   image: string
@@ -11,7 +11,7 @@ type siteMetadataProps = {
   author: string
 }
 
-export const useSiteMetadata = (): siteMetadataProps => {
+export const useSiteMetadata = (): SiteMetadataProps => {
   const { site } = useStaticQuery(
     graphql`
       query SITE_METADATA_QUERY {
