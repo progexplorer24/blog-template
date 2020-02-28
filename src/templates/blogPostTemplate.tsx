@@ -1,10 +1,9 @@
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import SEO from "react-seo-component"
 import React from "react"
 import { Layout } from "../components/layout"
-import { Dump } from "../components/dump"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
-// import { Dump } from "../components/dump"
 
 type BlogPostProps = {
   data: {
@@ -59,7 +58,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Dump
+      <SEO
         title={title}
         description={excerpt}
         image={

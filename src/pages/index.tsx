@@ -6,7 +6,6 @@ import Img from "gatsby-image"
 import SEO from "react-seo-component"
 import { Layout } from "../components/layout"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
-import { Dump } from "../components/dump"
 
 type ImageProps = {
   sizes: {
@@ -19,8 +18,6 @@ type ImageProps = {
 }
 
 const Image: React.FC<ImageProps> = ({ sizes }) => {
-  console.log(sizes)
-
   return (
     <Img
       css={css`
@@ -79,16 +76,6 @@ const Home: React.FC<HomePageProps> = ({ data }) => {
     <>
       <Layout>
         <SEO
-          title={title}
-          description={description}
-          image={`${siteUrl}${image}`}
-          pathname={siteUrl}
-          siteLanguage={siteLanguage}
-          siteLocale={siteLocale}
-          twitterUsername={twitterUsername}
-          author={author}
-        />
-        <Dump
           title={title}
           description={description}
           image={`${siteUrl}${image}`}
