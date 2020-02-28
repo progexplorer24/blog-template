@@ -1,7 +1,7 @@
 const siteMetadata = {
   title: `Code Explorer`,
   description: `This is my coding blog. I write about my coding journey`,
-  siteUrl: `https://mysite-url.com`,
+  siteUrl: `https://explorer-code.netlify.com`,
   image: `/explorer-code.jpg`,
   siteLanguage: `en-US`,
   siteLocale: `en_us`,
