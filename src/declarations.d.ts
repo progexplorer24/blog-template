@@ -5,6 +5,8 @@ declare module "tailwind.macro"
 //   export default content
 // }
 
+declare module "tailwindcss/base.css"
+
 declare module "*.svg" {
   import React from "react"
   export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>

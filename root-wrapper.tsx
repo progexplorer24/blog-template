@@ -3,6 +3,7 @@ import { MDXProvider } from "@mdx-js/react"
 import tw from "tailwind.macro"
 import { css } from "@emotion/core"
 import { Code } from "./src/components/code"
+import { GlobalStyle, theme } from "./src/utils/global-styles"
 
 const components = {
   // eslint-disable-next-line react/display-name
@@ -26,5 +27,8 @@ const components = {
 }
 
 export const wrapRootElement = ({ element }): ReactNode => (
-  <MDXProvider components={components}>{element}</MDXProvider>
+  <>
+    <GlobalStyle theme={theme} />
+    <MDXProvider components={components}>{element}</MDXProvider>
+  </>
 )
