@@ -6,6 +6,7 @@ declare module "tailwind.macro"
 // }
 
 declare module "tailwindcss/base.css"
+declare module "tailwindcss/defaultConfig"
 
 declare module "*.svg" {
   import React from "react"
