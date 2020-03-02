@@ -1,23 +1,17 @@
 import React from "react"
 import { Global, css } from "@emotion/core"
 import base from "tailwindcss/base.css"
+import defaultConfig from "tailwindcss/defaultConfig"
+import { Theme } from "./tailwind-types"
 
 export const theme = {
-  fonts: {
-    sans: "Poppins, sans-serif",
-    serif: "Pridi, sans",
-    monospace: '"Space Mono", monospace',
-  },
+  ...defaultConfig.theme,
 }
 
+type TailwindTheme = Theme
+
 type GlobalStylesProps = {
-  theme: {
-    fonts: {
-      sans: string
-      serif: string
-      monospace: string
-    }
-  }
+  theme: TailwindTheme
 }
 
 export const GlobalStyle: React.FC<GlobalStylesProps> = ({ theme }) => (
@@ -35,7 +29,6 @@ export const GlobalStyle: React.FC<GlobalStylesProps> = ({ theme }) => (
 
       html {
         box-sizing: border-box;
-        font-family: ${theme.fonts.sans};
         scroll-behavior: smooth;
       }
 
