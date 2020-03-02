@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "explorer-blog",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Prog Explorer <progexplorer@gmail.com>",
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@emotion/core": "^10.0.27",
