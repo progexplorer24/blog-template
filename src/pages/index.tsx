@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import tw from "tailwind.macro"
 import { css } from "@emotion/core"
 import Img from "gatsby-image"
+
 import SEO from "react-seo-component"
 import { Layout } from "../components/layout"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
