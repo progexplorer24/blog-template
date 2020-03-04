@@ -4,7 +4,7 @@ import tw from "tailwind.macro"
 import { css } from "@emotion/core"
 import copyToClipboard from "../../utils/copy-to-clipboard"
 import { CopyButton } from "../code-blocks/copy-button"
-import { LineNumber } from "../code-blocks/LineNumber"
+import { LineNumber } from "../code-blocks/line-number"
 
 type CodeProps = {
   children: {
