@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
-import theme from "prism-react-renderer/themes/duotoneDark"
 import tw from "tailwind.macro"
 import { css } from "@emotion/core"
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live"
-import copyToClipboard from "../utils/copy-to-clipboard"
+import copyToClipboard from "../../utils/copy-to-clipboard"
+import { CopyButton } from "../code-blocks/copy-button"
+import { LineNumber } from "../code-blocks/LineNumber"
 
 type CodeProps = {
   children: {
@@ -54,28 +54,13 @@ export const Code: React.FC<CodeProps> = props => {
             & .token-line {
               ${tw`h-5 leading-snug`}
             }
-            /* font-family: "Courier New", Courier, monospace; */
           `}
         >
-          <button
-            onClick={handleClick}
-            css={css`
-              ${tw`absolute px-4 py-1 m-1 text-white rounded-lg opacity-50 hover:opacity-100 focus:outline-none focus:opacity-100`}
-              right: 0.25rem;
-            `}
-          >
-            Copy
-          </button>
+          <CopyButton handleClick={handleClick} />
           {tokens.map((line, i) => (
             // eslint-disable-next-line react/jsx-key
             <div {...getLineProps({ line, key: i })}>
-              <span
-                css={css`
-                  ${tw`inline-block w-8 opacity-25 select-none`}
-                `}
-              >
-                {i + 1}
-              </span>
+              <LineNumber>{i + 1}</LineNumber>
               {line.map((token, key) => (
                 // eslint-disable-next-line react/jsx-key
                 <span {...getTokenProps({ token, key })} />
