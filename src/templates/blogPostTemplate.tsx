@@ -2,7 +2,7 @@ import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import SEO from "react-seo-component"
 import React from "react"
-import { Layout } from "../components/layout"
+import { Layout } from "../components/layout-elements/layout"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
 
 type BlogPostProps = {
