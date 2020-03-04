@@ -2,7 +2,8 @@ import React, { ReactNode } from "react"
 import { MDXProvider } from "@mdx-js/react"
 import tw from "tailwind.macro"
 import { css } from "@emotion/core"
-import { Code } from "./src/components/code"
+import { ThemeProvider } from "emotion-theming"
+import { Code } from "./src/components/page-elements/code"
 import { GlobalStyle, theme } from "./src/utils/global-styles"
 
 const components = {
@@ -28,7 +29,9 @@ const components = {
 
 export const wrapRootElement = ({ element }): ReactNode => (
   <>
-    <GlobalStyle theme={theme} />
-    <MDXProvider components={components}>{element}</MDXProvider>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle theme={theme} />
+      <MDXProvider components={components}>{element}</MDXProvider>
+    </ThemeProvider>
   </>
 )
