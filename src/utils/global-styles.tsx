@@ -1,11 +1,42 @@
 import React from "react"
 import { Global, css } from "@emotion/core"
-import base from "tailwindcss/base.css"
 import defaultConfig from "tailwindcss/defaultConfig"
+import tw from "tailwind.macro"
+
+import base from "tailwindcss/base.css"
 import { Theme } from "./tailwind-types"
 
-export const theme = {
+export const theme: Theme = {
   ...defaultConfig.theme,
+  fontFamily: {
+    sans: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      '"Fira sans"',
+      '"Droid Sans"',
+      "Helvetica",
+      "Neue",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+      '"Noto Color Emoji"',
+    ],
+    serif: ["Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],
+    mono: [
+      "Menlo",
+      "Monaco",
+      "Consolas",
+      '"Liberation Mono"',
+      '"Courier New"',
+      "monospace",
+    ],
+  },
 }
 
 type TailwindTheme = Theme
@@ -33,7 +64,7 @@ export const GlobalStyle: React.FC<GlobalStylesProps> = ({ theme }) => (
       }
 
       body {
-        line-height: 1.9;
+        ${tw`leading-normal`}
       }
     `}
   />
