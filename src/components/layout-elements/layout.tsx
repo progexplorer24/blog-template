@@ -1,9 +1,8 @@
 import React, { ReactNode } from "react"
-import { css } from "@emotion/core"
-import tw from "tailwind.macro"
 
-import { Header } from "./header"
-import { useSiteMetadata } from "../hooks/useSiteMetadata"
+import { Header } from "../header"
+import { useSiteMetadata } from "../../hooks/useSiteMetadata"
+import { Container } from "./container"
 
 type LayoutProps = {
   children?: ReactNode
@@ -12,13 +11,10 @@ type LayoutProps = {
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { title, description } = useSiteMetadata()
   return (
-    <main
-      css={css`
-        ${tw`max-w-2xl mx-auto my-0`}
-      `}
-    >
+    <main>
       <Header siteTitle={title} siteDescription={description} />
-      {children}
+
+      <Container>{children}</Container>
     </main>
   )
 }
