@@ -9,7 +9,7 @@ type HrProps = {
   css?: SerializedStyles
 }
 
-export const Hr: React.FC<HrProps> = ({ text, ...props }) => {
+export const TextHr: React.FC<HrProps> = ({ text, ...props }) => {
   const theme = useTheme<Theme>()
 
   return (
