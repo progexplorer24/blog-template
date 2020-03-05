@@ -16,7 +16,9 @@ import { H4 } from "../components/page-elements/h4"
 import { P } from "../components/page-elements/p"
 import { Blockquote } from "../components/page-elements/blockquote"
 import { MyLink } from "../components/page-elements/my-link"
-import { Hr } from "../components/page-elements/hr"
+import { TextHr } from "../components/page-elements/text-hr"
+import { InlineCode } from "../components/page-elements/inline-code"
+import { Ul } from "../components/page-elements/ul"
 
 type ImageProps = {
   sizes: {
@@ -89,13 +91,20 @@ const Home: React.FC<HomePageProps> = ({ data }) => {
         <H1>This is first heading</H1>
         <H2>This is second heading</H2>
         <H3>This is third heading</H3>
-        <Hr text="Next Chapter" />
+        <TextHr text="Next Chapter" />
         <H4>This is fourth heading</H4>
+        <Ul>
+          <li>Train</li>
+          <li>Sleep</li>
+          <li>Code</li>
+          <li>Repeat</li>
+        </Ul>
         <P>
           Tailwind uses literal color names (like red, green, etc.) and a
-          numeric scale (where 100 is light and 900 is dark) by default. This
-          ends up being fairly practical for most projects, but there are good
-          reasons to use other naming conventions as well.
+          numeric scale (where 100 is light and 900 is dark) by default.{" "}
+          <InlineCode>package.json</InlineCode> This ends up being fairly
+          practical for most projects, but there are good reasons to use other
+          naming conventions as well.
         </P>
         <P>
           For example, if you&apos;re working on a project that needs to support
@@ -116,7 +125,7 @@ const Home: React.FC<HomePageProps> = ({ data }) => {
         </P>
         <Blockquote
           author="John Wayne, Quoting and citing with <blockquote>"
-          citeSource="http://html5doctor.com/blockquote-q-cite/"
+          source="http://html5doctor.com/blockquote-q-cite/"
         >
           I don&apos;t know why we are here, but I&apos;m pretty sure that it is
           not in order to enjoy ourselves.
