@@ -5,14 +5,14 @@ import tw from "tailwind.macro"
 type BlockquoteProps = {
   children?: ReactNode
   author?: string
-  citeSource?: string
+  source?: string
   citeTitle?: string
 }
 
 export const Blockquote: React.FC<BlockquoteProps> = ({
   children,
   author = undefined,
-  citeSource = undefined,
+  source = undefined,
 }) => {
   return (
     <figure
@@ -20,9 +20,7 @@ export const Blockquote: React.FC<BlockquoteProps> = ({
         ${tw`py-1 pl-6 mt-8 text-base italic font-hairline text-gray-700 break-words border-l-4 border-teal-500 md:text-xl`}
       `}
     >
-      <blockquote
-        cite={typeof citeSource === "undefined" ? undefined : citeSource}
-      >
+      <blockquote cite={typeof source === "undefined" ? undefined : source}>
         &ldquo;{children}&rdquo;
       </blockquote>
       {typeof author === "undefined" ? (
@@ -34,11 +32,11 @@ export const Blockquote: React.FC<BlockquoteProps> = ({
           `}
         >
           &mdash;{" "}
-          {typeof citeSource === "undefined" ? (
+          {typeof source === "undefined" ? (
             author
           ) : (
             <cite>
-              <a href={citeSource} target="_blank" rel="noopener noreferrer">
+              <a href={source} target="_blank" rel="noopener noreferrer">
                 {author}
               </a>
             </cite>
