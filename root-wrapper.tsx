@@ -1,30 +1,33 @@
+/* eslint-disable react/display-name */
 import React, { ReactNode } from "react"
 import { MDXProvider } from "@mdx-js/react"
-import tw from "tailwind.macro"
-import { css } from "@emotion/core"
 import { ThemeProvider } from "emotion-theming"
-import { Code } from "./src/components/page-elements/code"
 import { GlobalStyle, theme } from "./src/utils/global-styles"
 
+import { Code } from "./src/components/page-elements/code"
+import {
+  H1,
+  H2,
+  H3,
+  H4,
+  P,
+  Blockquote,
+  TextHr,
+  InlineCode,
+} from "./src/components/page-elements"
+
 const components = {
-  // eslint-disable-next-line react/display-name
-  h2: ({ children }): ReactNode => (
-    <h2
-      css={css`
-        ${tw`text-4xl text-purple-700`}
-      `}
-    >
-      {children}
-    </h2>
-  ),
-  // eslint-disable-next-line react/display-name
-  "p.inlineCode": (props): ReactNode => (
-    <code style={{ backgroundColor: "lightgray" }} {...props} />
-  ),
-  // eslint-disable-next-line react/display-name
+  h1: (props): ReactNode => <H1 {...props} />,
+  h2: (props): ReactNode => <H2 {...props} />,
+  h3: (props): ReactNode => <H3 {...props} />,
+  h4: (props): ReactNode => <H4 {...props} />,
+  p: (props): ReactNode => <P {...props} />,
+  inlineCode: (props): ReactNode => <InlineCode {...props} />,
   pre: (props): ReactNode => {
     return <Code {...props} />
   },
+  Blockquote,
+  TextHr,
 }
 
 export const wrapRootElement = ({ element }): ReactNode => (
