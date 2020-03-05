@@ -16,6 +16,7 @@ import { H4 } from "../components/page-elements/h4"
 import { P } from "../components/page-elements/p"
 import { Blockquote } from "../components/page-elements/blockquote"
 import { MyLink } from "../components/page-elements/my-link"
+import { Hr } from "../components/page-elements/hr"
 
 type ImageProps = {
   sizes: {
@@ -88,6 +89,7 @@ const Home: React.FC<HomePageProps> = ({ data }) => {
         <H1>This is first heading</H1>
         <H2>This is second heading</H2>
         <H3>This is third heading</H3>
+        <Hr text="Next Chapter" />
         <H4>This is fourth heading</H4>
         <P>
           Tailwind uses literal color names (like red, green, etc.) and a
