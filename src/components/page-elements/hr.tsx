@@ -1,15 +1,16 @@
 import React from "react"
-import { css } from "@emotion/core"
+import { css, SerializedStyles } from "@emotion/core"
 import tw from "tailwind.macro"
 import { useTheme } from "emotion-theming"
 import { Theme } from "../../utils/tailwind-types"
 
-type HrProps = {}
+type HrProps = {
+  text?: string
+  css?: SerializedStyles
+}
 
-export const Hr: React.FC<HrProps> = () => {
+export const Hr: React.FC<HrProps> = ({ text, ...props }) => {
   const theme = useTheme<Theme>()
-
-  console.log(typeof theme.colors.gray[500])
 
   return (
     <hr
@@ -34,7 +35,8 @@ export const Hr: React.FC<HrProps> = () => {
           ${tw`relative inline-block px-2 py-0 leading-normal text-gray-700 bg-white`}
         }
       `}
-      data-content="Welcome"
+      {...props}
+      data-content={text ? text : ""}
     />
   )
 }
