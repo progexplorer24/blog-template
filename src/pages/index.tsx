@@ -10,15 +10,17 @@ import { useSiteMetadata } from "../hooks/useSiteMetadata"
 import { H1 } from "../components/page-elements/h1"
 import { Dump } from "../components/dump"
 import { theme } from "../utils/global-styles"
-import { H2 } from "../components/page-elements/h2"
-import { H3 } from "../components/page-elements/h3"
-import { H4 } from "../components/page-elements/h4"
-import { P } from "../components/page-elements/p"
-import { Blockquote } from "../components/page-elements/blockquote"
-import { MyLink } from "../components/page-elements/my-link"
-import { TextHr } from "../components/page-elements/text-hr"
-import { InlineCode } from "../components/page-elements/inline-code"
-import { Ul } from "../components/page-elements/ul"
+import {
+  H2,
+  H3,
+  H4,
+  P,
+  Blockquote,
+  MyLink,
+  TextHr,
+  InlineCode,
+  Ul,
+} from "../components/page-elements"
 
 type ImageProps = {
   sizes: {
