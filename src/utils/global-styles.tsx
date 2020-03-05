@@ -64,7 +64,7 @@ export const GlobalStyle: React.FC<GlobalStylesProps> = ({ theme }) => (
       }
 
       body {
-        ${tw`leading-normal bg-gray-100`}
+        ${tw`leading-normal text-gray-900 bg-gray-100`}
       }
     `}
   />
