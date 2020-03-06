@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react"
 import { css } from "@emotion/core"
 import tw from "tailwind.macro"
+import { MyLink } from "./my-link"
 
 type BlockquoteProps = {
   children?: ReactNode
   author?: string
   source?: string
-  citeTitle?: string
 }
 
 export const Blockquote: React.FC<BlockquoteProps> = ({
@@ -36,13 +36,19 @@ export const Blockquote: React.FC<BlockquoteProps> = ({
             author
           ) : (
             <cite>
-              <a href={source} target="_blank" rel="noopener noreferrer">
+              <MyLink external address={source}>
                 {author}
-              </a>
+              </MyLink>
             </cite>
           )}
         </figcaption>
       )}
     </figure>
   )
+}
+
+{
+  /* <a href={source} target="_blank" rel="noopener noreferrer">
+  {author}
+</a> */
 }
