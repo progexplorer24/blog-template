@@ -14,6 +14,9 @@ import {
   Blockquote,
   TextHr,
   InlineCode,
+  Hr,
+  MyLink,
+  List,
 } from "./src/components/page-elements"
 
 const components = {
@@ -23,11 +26,16 @@ const components = {
   h4: (props): ReactNode => <H4 {...props} />,
   p: (props): ReactNode => <P {...props} />,
   inlineCode: (props): ReactNode => <InlineCode {...props} />,
+  hr: (props): ReactNode => <Hr {...props} />,
+  ul: (props): ReactNode => <List {...props} />,
+  ol: (props): ReactNode => <List ordered {...props} />,
+  a: (props): ReactNode => <MyLink {...props} />,
   pre: (props): ReactNode => {
     return <Code {...props} />
   },
   Blockquote,
   TextHr,
+  List,
 }
 
 export const wrapRootElement = ({ element }): ReactNode => (
