@@ -15,13 +15,13 @@ export const TextHr: React.FC<HrProps> = ({ text, ...props }) => {
   return (
     <hr
       css={css`
-        ${tw`relative h-6 text-center border-0 outline-none opacity-50`}
+        ${tw`relative h-6 my-16 text-center border-0 outline-none `}
         &:before {
           content: "";
           background: linear-gradient(
             to right,
             transparent,
-            ${theme.colors.gray[700]},
+            ${theme.colors.gray[500]},
             transparent
           );
           position: absolute;
@@ -32,7 +32,7 @@ export const TextHr: React.FC<HrProps> = ({ text, ...props }) => {
         }
         &:after {
           content: attr(data-content);
-          ${tw`relative inline-block px-2 py-0 leading-normal text-gray-700 bg-white`}
+          ${tw`relative inline-block px-2 py-0 leading-normal text-gray-600 bg-gray-100`}
         }
       `}
       {...props}
