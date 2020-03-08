@@ -2,7 +2,7 @@
 import React, { ReactNode } from "react"
 import { MDXProvider } from "@mdx-js/react"
 import { ThemeProvider } from "emotion-theming"
-import { GlobalStyle, theme } from "./src/utils/global-styles"
+import { GlobalStyles, theme } from "./src/utils/global-styles"
 
 import { Code } from "./src/components/page-elements/code"
 import {
@@ -41,7 +41,7 @@ const components = {
 export const wrapRootElement = ({ element }): ReactNode => (
   <>
     <ThemeProvider theme={theme}>
-      <GlobalStyle theme={theme} />
+      <GlobalStyles />
       <MDXProvider components={components}>{element}</MDXProvider>
     </ThemeProvider>
   </>

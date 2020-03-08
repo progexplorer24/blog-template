@@ -39,13 +39,9 @@ export const theme: Theme = {
   },
 }
 
-type TailwindTheme = Theme
+type GlobalStylesProps = {}
 
-type GlobalStylesProps = {
-  theme: TailwindTheme
-}
-
-export const GlobalStyle: React.FC<GlobalStylesProps> = ({ theme }) => (
+export const GlobalStyles: React.FC<GlobalStylesProps> = () => (
   <Global
     styles={css`
       ${base}
