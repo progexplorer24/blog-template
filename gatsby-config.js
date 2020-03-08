@@ -16,11 +16,27 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-web-font-loader`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        google: {
-          families: ["Poppins:400,700", "Pridi:400,700", "Space Mono:400,700"],
-        },
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 768,
+              withWebp: true,
+              tracedSVG: true,
+            },
+          },
+        ],
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 768,
+            },
+          },
+        ],
       },
     },
     {
@@ -35,28 +51,6 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 768,
-            },
-          },
-        ],
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 768,
-            },
-          },
-        ],
       },
     },
     {
