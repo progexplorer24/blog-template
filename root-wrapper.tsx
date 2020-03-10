@@ -16,6 +16,7 @@ import {
   Blockquote,
   TextHr,
   InlineCode,
+  Small,
   Hr,
   List,
 } from "./src/components/page-elements"
@@ -38,12 +39,19 @@ const components = {
       `}
     />
   ),
-  pre: (props): ReactNode => {
-    return <Code {...props} />
-  },
+  pre: (props): ReactNode => <Code {...props} />,
+  img: (props): ReactNode => (
+    <img
+      {...props}
+      css={css`
+        ${tw`rounded-lg`}
+      `}
+    />
+  ),
   Blockquote,
   TextHr,
   List,
+  Small,
 }
 
 export const wrapRootElement = ({ element }): ReactNode => (
