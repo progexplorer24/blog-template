@@ -14,7 +14,7 @@ export const MyLink: React.FC<MyLinkProps> = ({
   address,
 }) => {
   const linkStyles = css`
-    ${tw`relative inline-block text-teal-500 underline hover:text-teal-700`}
+    ${tw`relative inline-block text-teal-600 underline hover:text-teal-800`}
   `
 
   return (
