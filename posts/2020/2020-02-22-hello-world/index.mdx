@@ -2,7 +2,10 @@
 title: Hello World - from mdx!
 date: 2020-02-22
 published: true
+cover: ./cover.jpg
 ---
+
+![](cover.jpg)
 
 # h1 Heading
 
@@ -18,11 +21,15 @@ Developer about how source code control is managed with VBA projects.
 Source control on VBA has long been a bit `inline code` of a nonsense, there isn't
 any really. When I started my first developer role it was talked about
 in my team why we don't use it and the best efforts the team did at
-the time was save the new version to a different folder location and
+the time was save the new version to a different folder location and. [Getting Started Mdx](https://mdxjs.com/getting-started)
 
 **to compare changes in the code from `inline code` a previous version meant getting a
 text compare app copy pasting the code into it from the two different
 versions so you could track what was changed.**
+
+~~**to compare changes in the code from `inline code` a previous version meant getting a
+text compare app copy pasting the code into it from the two different
+versions so you could track what was changed.**~~
 
 ---
 
@@ -32,11 +39,22 @@ _to compare changes in the code from a previous version meant getting a
 text compare app copy pasting the code into it from the two different
 versions so you could track what was changed._
 
----
+<TextHr />
 
-<Blockquote
-  author="Some guy from UK"
-  source="https://www.gatsbyjs.org/docs/mdx/importing-and-using-components/#make-components-available-globally-as-shortcodes"
->
-  Yoga is a Martial art that you do against yourself.
-</Blockquote>
+- eat
+- train
+- code
+- repeat
+
+1.  eat
+2.  train
+3.  code
+4.  repeat<List ordered elements={["eat", "train", "code", "repeat"]} />
+    <Blockquote
+      author="Some guy from UK"
+      source="https://www.gatsbyjs.org/docs/mdx/importing-and-using-components/#make-components-available-globally-as-shortcodes"
+    >
+      Yoga is a Martial art that you do against yourself.
+    </Blockquote>
+
+![alt](https://mdx-logo.now.sh)
