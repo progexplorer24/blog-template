@@ -19,7 +19,8 @@ import {
   MyLink,
   TextHr,
   InlineCode,
-  Ul,
+  List,
+  Hr,
 } from "../components/page-elements"
 
 type ImageProps = {
@@ -92,15 +93,26 @@ const Home: React.FC<HomePageProps> = ({ data }) => {
       <Layout>
         <H1>This is first heading</H1>
         <H2>This is second heading</H2>
+        <Hr />
         <H3>This is third heading</H3>
         <TextHr text="Next Chapter" />
         <H4>This is fourth heading</H4>
-        <Ul>
-          <li>Train</li>
+        <List elements={["Train", "Sleep", "Code", "Repeat"]} />
+        <List ordered elements={["Train", "Sleep", "Code", "Repeat"]} />
+        <List>
+          <li>
+            <span
+              css={css`
+                ${tw`pl-1`}
+              `}
+            >
+              Train
+            </span>
+          </li>
           <li>Sleep</li>
           <li>Code</li>
           <li>Repeat</li>
-        </Ul>
+        </List>
         <P>
           Tailwind uses literal color names (like red, green, etc.) and a
           numeric scale (where 100 is light and 900 is dark) by default.{" "}
