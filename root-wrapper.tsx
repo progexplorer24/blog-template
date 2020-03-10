@@ -3,6 +3,8 @@ import React, { ReactNode } from "react"
 import { MDXProvider } from "@mdx-js/react"
 import { ThemeProvider } from "emotion-theming"
 import { GlobalStyles, theme } from "./src/utils/global-styles"
+import { css } from "@emotion/core"
+import tw from "tailwind.macro"
 
 import { Code } from "./src/components/page-elements/code"
 import {
@@ -29,7 +31,14 @@ const components = {
   hr: (props): ReactNode => <Hr {...props} />,
   ul: (props): ReactNode => <List {...props} />,
   ol: (props): ReactNode => <List ordered {...props} />,
-  a: (props): ReactNode => <MyLink {...props} />,
+  a: (props): ReactNode => (
+    <a
+      {...props}
+      css={css`
+        ${tw`inline-block text-teal-600 underline hover:text-teal-800`}
+      `}
+    />
+  ),
   pre: (props): ReactNode => {
     return <Code {...props} />
   },
