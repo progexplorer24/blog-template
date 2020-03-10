@@ -8,8 +8,8 @@ import SEO from "react-seo-component"
 import { Layout } from "../components/layout-elements/layout"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
 import { H1 } from "../components/page-elements/h1"
-import { Dump } from "../components/dump"
-import { theme } from "../utils/global-styles"
+// import { Dump } from "../components/dump"
+// import { theme } from "../utils/global-styles"
 import {
   H2,
   H3,
@@ -145,12 +145,7 @@ const Home: React.FC<HomePageProps> = ({ data }) => {
           not in order to enjoy ourselves.
         </Blockquote>
         <MyLink address="/">Yet another link</MyLink>
-        <Dump
-          defaultConfig={theme}
-          css={css`
-            ${tw`overflow-x-hidden`}
-          `}
-        />
+
         <SEO
           title={title}
           description={description}
