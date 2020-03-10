@@ -7,6 +7,7 @@ const siteMetadata = {
   siteLocale: `en_us`,
   author: `Prog Explorer`,
   twitterUsername: `yourUserName`,
+  favicon: `./static/gatsby-icon.png`,
 }
 
 module.exports = {
@@ -56,8 +57,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Explorer Code`,
+        short_name: `ExB`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
