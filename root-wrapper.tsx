@@ -17,7 +17,6 @@ import {
   TextHr,
   InlineCode,
   Hr,
-  MyLink,
   List,
 } from "./src/components/page-elements"
 
