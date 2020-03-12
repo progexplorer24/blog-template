@@ -5,6 +5,7 @@ import { css } from "@emotion/core"
 import copyToClipboard from "../../utils/copy-to-clipboard"
 import { CopyButton } from "../code-blocks/copy-button"
 import { LineNumber } from "../code-blocks/line-number"
+import MaterialDark from "../../utils/material-dark-hc"
 
 type CodeProps = {
   children: {
@@ -38,6 +39,7 @@ export const Code: React.FC<CodeProps> = props => {
           ? matches.groups.lang
           : ""
       }
+      theme={MaterialDark}
     >
       {({
         className,
