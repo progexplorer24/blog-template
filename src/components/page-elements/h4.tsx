@@ -4,7 +4,7 @@ import { css } from "@emotion/core"
 import { useTheme } from "emotion-theming"
 import { Theme } from "../../utils/tailwind-types"
 
-import { headings } from "./elements-partials"
+import { headings, linkedHeaders } from "./elements-partials"
 type H4Props = {
   children?: ReactNode
 }
@@ -15,6 +15,7 @@ export const H4: React.FC<H4Props> = ({ children = "" }) => {
     <h4
       css={css`
         ${headings}
+         ${linkedHeaders}
         ${tw`text-lg sm:text-xl`}
         font-family: ${theme.fontFamily.sans.toString()}
       `}

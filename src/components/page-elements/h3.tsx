@@ -4,7 +4,7 @@ import { css } from "@emotion/core"
 import { useTheme } from "emotion-theming"
 import { Theme } from "../../utils/tailwind-types"
 
-import { headings } from "./elements-partials"
+import { headings, linkedHeaders } from "./elements-partials"
 type H3Props = {
   children?: ReactNode
 }
@@ -15,6 +15,7 @@ export const H3: React.FC<H3Props> = ({ children = "" }) => {
     <h3
       css={css`
         ${headings}
+         ${linkedHeaders}
         ${tw`text-xl sm:text-2xl`}
         font-family: ${theme.fontFamily.sans.toString()}
       `}
