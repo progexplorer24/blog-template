@@ -10,7 +10,7 @@ export const Container: React.FC<ContainerProps> = ({ children }) => {
   return (
     <div
       css={css`
-        ${tw`max-w-3xl px-4 mx-auto my-0`}
+        ${tw`max-w-3xl px-6 mx-auto my-0`}
       `}
     >
       {children}
