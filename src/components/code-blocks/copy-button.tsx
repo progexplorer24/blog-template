@@ -11,8 +11,7 @@ export const CopyButton: React.FC<CopyButtonProps> = ({ handleClick }) => {
     <button
       onClick={handleClick}
       css={css`
-        ${tw`absolute px-4 py-1 m-1 text-white rounded-lg opacity-50 hover:opacity-100 focus:outline-none focus:opacity-100`}
-        right: 0.25rem;
+        ${tw`absolute right-0 z-10 px-4 pt-2 pb-5 text-xs font-semibold text-gray-500 rounded-lg hover:text-gray-200 focus:outline-none focus:text-gray-200`}
       `}
     >
       Copy
