@@ -5,7 +5,7 @@ import { css } from "@emotion/core"
 import copyToClipboard from "../../utils/copy-to-clipboard"
 import { CopyButton } from "../code-blocks/copy-button"
 import { LineNumber } from "../code-blocks/line-number"
-import MaterialDark from "../../utils/material-dark-hc"
+import { LanguageButton } from "../code-blocks/language-button"
 
 type CodeProps = {
   children: {
@@ -30,6 +30,10 @@ export const Code: React.FC<CodeProps> = props => {
     copyToClipboard(codeString)
   }
 
+  const metaString = mdxProps.metastring || ""
+
+  console.log(metaString)
+
   return (
     <Highlight
       {...defaultProps}
@@ -39,7 +43,7 @@ export const Code: React.FC<CodeProps> = props => {
           ? matches.groups.lang
           : ""
       }
-      theme={MaterialDark}
+      theme={undefined}
     >
       {({
         className,
@@ -48,28 +52,70 @@ export const Code: React.FC<CodeProps> = props => {
         getLineProps,
         getTokenProps,
       }): ReactNode => (
-        <pre
-          className={className}
-          style={style}
+        <div
           css={css`
-            ${tw`relative p-2 mx-0 my-4 overflow-x-auto text-left rounded-lg`}
-            & .token-line {
-              ${tw`h-5 leading-snug`}
-            }
+            ${tw`relative`}
           `}
         >
-          <CopyButton handleClick={handleClick} />
-          {tokens.map((line, i) => (
-            // eslint-disable-next-line react/jsx-key
-            <div {...getLineProps({ line, key: i })}>
-              <LineNumber>{i + 1}</LineNumber>
-              {line.map((token, key) => (
+          {matches.groups.lang ? (
+            <LanguageButton>{matches.groups.lang}</LanguageButton>
+          ) : null}
+          <CopyButton handleClick={handleClick}>Copy</CopyButton>
+          <pre
+            className={className}
+            style={style}
+            css={css`
+              ${tw`relative px-4 pt-8 pb-2 my-2 overflow-x-auto scrolling-touch text-left rounded-lg`}
+              & .token-line {
+                ${tw`h-5 leading-snug`}
+              }
+              /* width */
+              ::-webkit-scrollbar {
+                ${tw`h-2`}
+              }
+
+              /* Track */
+              ::-webkit-scrollbar-track {
+                ${tw`bg-teal-900`}
+              }
+
+              /* Handle */
+              ::-webkit-scrollbar-thumb {
+                ${tw`bg-teal-700`}
+              }
+            `}
+          >
+            <code
+              css={css`
+                ${tw`inline-block min-w-full`}
+              `}
+            >
+              {tokens.map((line, i) => (
                 // eslint-disable-next-line react/jsx-key
-                <span {...getTokenProps({ token, key })} />
+                <div
+                  className="wiggy"
+                  {...getLineProps({
+                    line,
+                    key: i,
+                  })}
+                >
+                  {/* {console.log(
+                    getLineProps({
+                      line,
+                      key: i,
+                      className: `code-highlight`,
+                    })
+                  )} */}
+                  <LineNumber>{i + 1}</LineNumber>
+                  {line.map((token, key) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <span {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
               ))}
-            </div>
-          ))}
-        </pre>
+            </code>
+          </pre>
+        </div>
       )}
     </Highlight>
   )
