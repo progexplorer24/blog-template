@@ -19,7 +19,7 @@ type BlogPostProps = {
       frontmatter: {
         title: string
         date: string
-        cover?: {
+        cover: {
           publicURL: string
           childImageSharp: {
             sizes: {
@@ -30,7 +30,7 @@ type BlogPostProps = {
               sizes: string
             }
           }
-        }
+        } | null
         coverCredit?: string
         coverAlt?: string
       }
@@ -103,9 +103,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ data, pageContext }) => {
         title={title}
         description={excerpt}
         image={
-          typeof cover === "undefined"
-            ? `${siteUrl}${image}`
-            : `${siteUrl}${cover.publicURL}`
+          cover === null ? `${siteUrl}${image}` : `${siteUrl}${cover.publicURL}`
         }
         pathname={`${siteUrl}${fields.slug}`}
         siteLanguage={siteLanguage}
@@ -118,7 +116,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ data, pageContext }) => {
       />
       <h1>{title}</h1>
       <p>{date}</p>
-      {typeof cover === "undefined" ? null : (
+      {cover === null ? null : (
         <Img
           source={cover.publicURL}
           alt={coverAlt ? coverAlt : "cover image"}

@@ -80,13 +80,14 @@ export const useSyntaxHighlight = (): SerializedStyles => {
     }
 
     code.language-javascript,
-    .token.attr-name,
+    .token.operator,
+    .token.tag.class-name,
     .token.known-class-name.class-name {
       color: #ffe484;
     }
 
     .token.keyword,
-    .token.operator {
+    .token.attr-name {
       color: #c792ea;
     }
 
