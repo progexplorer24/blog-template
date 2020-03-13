@@ -6,6 +6,7 @@ import tw from "tailwind.macro"
 
 import base from "tailwindcss/base.css"
 import { Theme } from "./tailwind-types"
+import { useSyntaxHighlight } from "../hooks/useThemeObject"
 
 export const theme: Theme = {
   ...defaultConfig.theme,
@@ -18,6 +19,7 @@ export const GlobalStyles: React.FC<GlobalStylesProps> = () => (
   <Global
     styles={css`
       ${base}
+      ${useSyntaxHighlight()}
       *,
       *::before,
       *::after {
